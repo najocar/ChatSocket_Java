@@ -1,8 +1,14 @@
 package com.dam.chatsocket_java.model.domain;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class User {
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "user")
+public class User implements Serializable {
     private String name;
     private int currentRoom;
 

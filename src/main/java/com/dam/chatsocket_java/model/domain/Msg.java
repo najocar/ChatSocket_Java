@@ -1,11 +1,21 @@
 package com.dam.chatsocket_java.model.domain;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import com.dam.chatsocket_java.model.connections.LocalDateAdapter;
 
-public class Msg {
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "msg")
+public class Msg implements Serializable {
     private String userName;
     private String msgContent;
+
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate date;
 
     public Msg(String userName, String msgContent, LocalDate date) {
