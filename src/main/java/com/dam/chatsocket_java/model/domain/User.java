@@ -12,9 +12,9 @@ public class User implements Serializable {
     private String name;
     private int currentRoom;
 
-    public User(String name, int currentRoom) {
+    public User(String name) {
         this.name = name;
-        this.currentRoom = currentRoom;
+        this.currentRoom = 0;
     }
 
     public User() {

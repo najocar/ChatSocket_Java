@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,16 +21,16 @@ public class Room implements Serializable {
     @XmlElement(name = "msgs", type=Msg.class)
     List<Msg> msgList;
 
-    public Room(int idRoom, List<User> usersList, List<Msg> msgList) {
+    public Room(int idRoom) {
         this.idRoom = idRoom;
-        this.usersList = usersList;
-        this.msgList = msgList;
+        this.usersList = new ArrayList<User>();
+        this.msgList = new ArrayList<Msg>();
     }
 
     public Room() {
         this.idRoom = 0;
-        this.usersList = null;
-        this.msgList = null;
+        this.usersList = new ArrayList<User>();
+        this.msgList = new ArrayList<Msg>();
     }
 
     public int getIdRoom() {

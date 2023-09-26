@@ -22,7 +22,7 @@ public class testMain {
         List<Msg> msgList = new ArrayList<>();
         msgList.add(mensaje);
 
-        Room sala = new Room(1, userList, msgList);
+        //Room sala = new Room(1, userList, msgList);
 
         connection.writeXML(sala);
 
