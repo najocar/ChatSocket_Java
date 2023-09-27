@@ -14,7 +14,7 @@ public class testMain {
     public static void main(String[] args) {
         ConnectionXML connection = new ConnectionXML();
 
-        User usuario = new User("usuario1", 1);
+        User usuario = new User("usuario1");
         Msg mensaje = new Msg("usuario1", "Hola mundo", LocalDate.now());
 
         List<User> userList = new ArrayList<>();
@@ -24,7 +24,7 @@ public class testMain {
 
         //Room sala = new Room(1, userList, msgList);
 
-        connection.writeXML(sala);
+        //connection.writeXML(sala);
 
         Room sala2 = connection.loadXML();
         System.out.println(sala2);

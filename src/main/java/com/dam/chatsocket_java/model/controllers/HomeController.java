@@ -1,13 +1,16 @@
-package com.dam.chatsocket_java;
+package com.dam.chatsocket_java.model.controllers;
 
+import com.dam.chatsocket_java.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,6 +20,11 @@ public class HomeController implements Initializable {
     private Pane navbar;
     @FXML
     private Button closeButton;
+
+    @FXML
+    private TextField fieldUser;
+    @FXML
+    private Button btnEnter;
 
 
     private double xOffset = 0;
@@ -47,5 +55,13 @@ public class HomeController implements Initializable {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    public void goRoom() {
+        try {
+            App.setRoot("room");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
