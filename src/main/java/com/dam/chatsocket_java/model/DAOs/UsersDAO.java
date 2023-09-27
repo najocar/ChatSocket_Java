@@ -4,9 +4,7 @@ import com.dam.chatsocket_java.model.connections.ConnectionXML;
 import com.dam.chatsocket_java.model.domain.User;
 import com.dam.chatsocket_java.model.domain.Users;
 
-import java.util.List;
-
-public class UserDAO {
+public class UsersDAO {
     static ConnectionXML con = new ConnectionXML();
 
     public boolean createUser(User user){
@@ -29,10 +27,16 @@ public class UserDAO {
         return result;
     }
 
-    public List<User> getUsers(){
-        List<User> result = null;
-        Users users = con.loadXMLUsers();
-        result = users.getUsers();
+    public Users getUsers(){
+        return con.loadXMLUsers();
+    }
+
+    public boolean removeUser(User user) {
+        boolean result = false;
+         Users users = con.loadXMLUsers();
+         users.getUsers().remove(user);
+         con.writeXMLUser(users);
         return result;
     }
+
 }

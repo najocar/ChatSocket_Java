@@ -2,6 +2,7 @@ package com.dam.chatsocket_java.model.domain;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
 @XmlRootElement(name = "rooms")
 public class Rooms implements Serializable {
 
+    @XmlElement(name = "room", type=String.class)
     private List<String> roomsId;
 
     public Rooms() {
@@ -25,7 +27,7 @@ public class Rooms implements Serializable {
         return roomsId;
     }
 
-    public void setRoomsList(List<String> roomsId) {
+    public void setRoom(List<String> roomsId) {
         this.roomsId = roomsId;
     }
 
