@@ -1,27 +1,39 @@
 package com.dam.chatsocket_java.model;
 
-import com.dam.chatsocket_java.model.DAOs.UsersDAO;
-import com.dam.chatsocket_java.model.domain.*;
+import com.dam.chatsocket_java.model.DAOs.UserDAO;
+import com.dam.chatsocket_java.model.connections.ConnectionXML;
+import com.dam.chatsocket_java.model.domain.Msg;
+import com.dam.chatsocket_java.model.domain.Room;
+import com.dam.chatsocket_java.model.domain.User;
+import com.dam.chatsocket_java.model.domain.Users;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class testMain {
     public static void main(String[] args) {
 
-//        RoomsDAO roomsDao = new RoomsDAO();
-//       roomsDao.writeRoom(new Room(2));
-//        roomsDao.removeRooms(new Room(2));
+//        ConnectionXML connection = new ConnectionXML();
+        UserDAO userDAO = new UserDAO();
+        User usuario1 = new User("usuario1");
+        userDAO.createUser(usuario1);
+//        User usuario = new User("usuario1", 1);
+//        Msg mensaje = new Msg("usuario1", "Hola mundo", LocalDate.now());
 //
+//        List<User> userList = new ArrayList<>();
+//        userList.add(usuario);
+//        List<Msg> msgList = new ArrayList<>();
+//        msgList.add(mensaje);
+
+        //Room sala = new Room(1, userList, msgList);
+
+//        connection.writeXML(sala);
 //
-//        Rooms rooms = roomsDao.loadRooms();
-//        System.out.println(rooms);
+//        Room sala2 = connection.loadXML();
+//        System.out.println(sala2);
 
-        UsersDAO userDAO = new UsersDAO();
-
-        Users users = userDAO.getUsers();
-        System.out.println(users);
-
-        userDAO.removeUser(new User("usuario4"));
-        users = userDAO.getUsers();
-        System.out.println(users);
 
     }
 }
