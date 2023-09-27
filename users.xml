@@ -8,12 +8,4 @@
         <name>usuario2</name>
         <currentRoom>0</currentRoom>
     </user>
-    <user>
-        <name>usuario3</name>
-        <currentRoom>0</currentRoom>
-    </user>
-    <user>
-        <name>usuario1</name>
-        <currentRoom>0</currentRoom>
-    </user>
 </users>

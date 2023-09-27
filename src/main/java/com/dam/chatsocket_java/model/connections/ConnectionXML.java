@@ -1,7 +1,6 @@
 package com.dam.chatsocket_java.model.connections;
 
-import com.dam.chatsocket_java.model.domain.Room;
-import com.dam.chatsocket_java.model.domain.User;
+import com.dam.chatsocket_java.model.domain.Rooms;
 import com.dam.chatsocket_java.model.domain.Users;
 
 import javax.xml.bind.JAXBContext;
@@ -12,40 +11,40 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 
 public class ConnectionXML {
     static final File fileRooms = new File("rooms.xml");
-    static final File fileUser = new File("users.xml");
+    static final File fileUsers = new File("users.xml");
 
-    public ConnectionXML() {
-    }
+    public ConnectionXML() {}
 
-    public Room loadXMLRooms() {
-        Room result = null;
-        try {
-            JAXBContext jc = JAXBContext.newInstance(Room.class);
-            Unmarshaller unmarshaller = jc.createUnmarshaller();
-            result = (Room) unmarshaller.unmarshal(fileRooms);
-        } catch (JAXBException e) {
-            e.printStackTrace();
+    public Rooms loadXMLRooms() {
+        Rooms result = null;
+        if(fileRooms.exists()){
+            try {
+                JAXBContext jc = JAXBContext.newInstance(Rooms.class);
+                Unmarshaller unmarshaller = jc.createUnmarshaller();
+                result = (Rooms) unmarshaller.unmarshal(fileRooms);
+            } catch (JAXBException e) {
+                e.printStackTrace();
+            }
         }
         return result;
     }
 
-    public void writeXMLRooms(Room room) {
+    public void writeXMLRooms(Rooms rooms) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileRooms))) {
-            JAXBContext jc = JAXBContext.newInstance(Room.class);
+            JAXBContext jc = JAXBContext.newInstance(Rooms.class);
             Marshaller marshaller = jc.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(room, writer);
+            marshaller.marshal(rooms, writer);
         } catch (JAXBException | IOException e) {
             e.printStackTrace();
         }
     }
 
     public void writeXMLUser(Users userList) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileUser))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileUsers))) {
             JAXBContext jc = JAXBContext.newInstance(Users.class);
             Marshaller marshaller = jc.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -57,12 +56,14 @@ public class ConnectionXML {
 
     public Users loadXMLUsers() {
         Users result = null;
-        try {
-            JAXBContext jc = JAXBContext.newInstance(Users.class);
-            Unmarshaller unmarshaller = jc.createUnmarshaller();
-            result = (Users) unmarshaller.unmarshal(fileUser);
-        } catch (JAXBException e) {
-            e.printStackTrace();
+        if(fileUsers.exists()){
+            try {
+                JAXBContext jc = JAXBContext.newInstance(Users.class);
+                Unmarshaller unmarshaller = jc.createUnmarshaller();
+                result = (Users) unmarshaller.unmarshal(fileUsers);
+            } catch (JAXBException e) {
+                e.printStackTrace();
+            }
         }
         return result;
     }
