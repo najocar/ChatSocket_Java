@@ -14,6 +14,7 @@ import java.util.List;
 
 public class testMain {
     public static void main(String[] args) {
+
 //        ConnectionXML connection = new ConnectionXML();
         UserDAO userDAO = new UserDAO();
         User usuario1 = new User("usuario1");
@@ -32,6 +33,7 @@ public class testMain {
 //
 //        Room sala2 = connection.loadXML();
 //        System.out.println(sala2);
+
 
     }
 }
