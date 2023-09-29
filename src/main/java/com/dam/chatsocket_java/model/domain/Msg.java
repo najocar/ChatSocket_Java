@@ -12,30 +12,30 @@ import com.dam.chatsocket_java.model.connections.LocalDateAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "msg")
 public class Msg implements Serializable {
-    private String userName;
+    private User user;
     private String msgContent;
 
     @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate date;
 
-    public Msg(String userName, String msgContent, LocalDate date) {
-        this.userName = userName;
+    public Msg(User user, String msgContent, LocalDate date) {
+        this.user = user;
         this.msgContent = msgContent;
         this.date = date;
     }
 
     public Msg() {
-        this.userName = "";
+        this.user = null;
         this.msgContent = "";
         this.date = null;
     }
 
-    public String getUserName() {
-        return userName;
+    public User getUserName() {
+        return user;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(User user) {
+        this.user = user;
     }
 
     public String getMsgContent() {
@@ -59,18 +59,18 @@ public class Msg implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Msg msg = (Msg) o;
-        return Objects.equals(userName, msg.userName) && Objects.equals(date, msg.date);
+        return Objects.equals(user, msg.user) && Objects.equals(date, msg.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userName, date);
+        return Objects.hash(user, date);
     }
 
     @Override
     public String toString() {
         return "Msg{" +
-                "userName='" + userName + '\'' +
+                "userName='" + user + '\'' +
                 ", msgContent='" + msgContent + '\'' +
                 ", date=" + date +
                 '}';

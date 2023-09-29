@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<room>
-    <idRoom>1</idRoom>
-    <users>
-        <name>usuario1</name>
-        <currentRoom>1</currentRoom>
-    </users>
-    <msgs>
-        <userName>usuario1</userName>
-        <msgContent>Hola mundo</msgContent>
-        <date>2023-09-25</date>
-    </msgs>
-</room>
+<rooms>
+    <room>1</room>
+</rooms>
