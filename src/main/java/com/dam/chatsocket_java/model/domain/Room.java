@@ -15,22 +15,17 @@ import java.util.Objects;
 public class Room implements Serializable {
     int idRoom;
 
-    @XmlElement(name = "users", type=User.class)
-    List<User> usersList;
-
-    @XmlElement(name = "msgs", type=Msg.class)
-    List<Msg> msgList;
+    @XmlElement(name = "msgs", type=Msgs.class)
+    Msgs msgList;
 
     public Room(int idRoom) {
         this.idRoom = idRoom;
-        this.usersList = new ArrayList<User>();
-        this.msgList = new ArrayList<Msg>();
+        this.msgList = new Msgs();
     }
 
     public Room() {
         this.idRoom = 0;
-        this.usersList = new ArrayList<User>();
-        this.msgList = new ArrayList<Msg>();
+        this.msgList = new Msgs();
     }
 
     public int getIdRoom() {
@@ -41,20 +36,16 @@ public class Room implements Serializable {
         this.idRoom = idRoom;
     }
 
-    public List<User> getUsersList() {
-        return usersList;
-    }
-
-    public void setUsersList(List<User> usersList) {
-        this.usersList = usersList;
-    }
-
-    public List<Msg> getMsgList() {
+    public Msgs getMsgList() {
         return msgList;
     }
 
-    public void setMsgList(List<Msg> msgList) {
+    public void setMsgList(Msgs msgList) {
         this.msgList = msgList;
+    }
+
+    public void addMsg(Msg msg){
+        this.msgList.addMsg(msg);
     }
 
     @Override
@@ -74,7 +65,6 @@ public class Room implements Serializable {
     public String toString() {
         return "Room{" +
                 "idRoom=" + idRoom +
-                ", usersList=" + usersList +
                 ", msgList=" + msgList +
                 '}';
     }
