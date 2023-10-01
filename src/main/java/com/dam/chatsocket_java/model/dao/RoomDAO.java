@@ -1,4 +1,4 @@
-package com.dam.chatsocket_java.model.DAOs;
+package com.dam.chatsocket_java.model.dao;
 
 import com.dam.chatsocket_java.model.connections.ConnectionXML;
 import com.dam.chatsocket_java.model.domain.Msg;
