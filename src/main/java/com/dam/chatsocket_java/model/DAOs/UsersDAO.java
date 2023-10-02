@@ -4,6 +4,8 @@ import com.dam.chatsocket_java.model.connections.ConnectionXML;
 import com.dam.chatsocket_java.model.domain.User;
 import com.dam.chatsocket_java.model.domain.Users;
 
+import java.util.List;
+
 public class UsersDAO {
     static ConnectionXML con = new ConnectionXML();
 
@@ -40,5 +42,15 @@ public class UsersDAO {
             result = true;
         }
         return result;
+    }
+
+    public boolean userExist(String name) {
+        List<User> allUsers = readUsers().getUsers();
+        for (User user: allUsers) {
+            if (user.equals(new User(name))){
+                return true;
+            }
+        }
+        return false;
     }
 }
