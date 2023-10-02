@@ -23,10 +23,23 @@ public class testMain {
     static LoggerClass logger = new LoggerClass(testMain.class.getName());
 
     public static void main(String[] args) {
-        logger.info("Logger prueba");
-        for(RoomsDataDTO aux: testRoomDataDTO()){
-            System.out.println(aux);
-        }
+        Runnable fileReadingTask = () -> {
+            while(true){
+                try {
+                    for(RoomsDataDTO aux: testRoomDataDTO()){
+                        System.out.println(aux);
+                    }
+                    Thread.sleep(5000);
+                } catch (InterruptedException | IllegalArgumentException e) {
+                    Thread.currentThread().interrupt();
+                    logger.info("El hilo a dejado de ejecutarse");
+                    break;
+                }
+            }
+        };
+
+        Thread thread = new Thread(fileReadingTask);
+        thread.start();
 
     }
 
