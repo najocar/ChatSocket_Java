@@ -4,6 +4,7 @@ module com.dam.chatsocket_java {
 
     requires org.controlsfx.controls;
     requires java.xml.bind;
+    requires java.logging;
 
     opens com.dam.chatsocket_java to javafx.fxml;
     exports com.dam.chatsocket_java;
