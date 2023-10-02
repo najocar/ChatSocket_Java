@@ -2,11 +2,11 @@
 <users>
     <user>
         <name>usuario1</name>
-        <currentRoom>0</currentRoom>
+        <currentRoom>1</currentRoom>
     </user>
     <user>
         <name>usuario2</name>
-        <currentRoom>0</currentRoom>
+        <currentRoom>1</currentRoom>
     </user>
     <user>
         <name>nombrePrueba</name>

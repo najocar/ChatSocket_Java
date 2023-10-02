@@ -3,22 +3,27 @@ package com.dam.chatsocket_java.model.dao;
 import com.dam.chatsocket_java.model.connections.ConnectionXML;
 import com.dam.chatsocket_java.model.domain.Msg;
 import com.dam.chatsocket_java.model.domain.Room;
+import com.dam.chatsocket_java.utils.LoggerClass;
 
+import javax.xml.bind.JAXBException;
 import java.io.File;
+import java.io.IOException;
 
 public class RoomDAO {
-    // room[].xml -> {
-    //      roomId: string,
-    //      msgs -> {
-    //          msg: Msg
-    //      }
-    //  }
     ConnectionXML connection = new ConnectionXML();
+    static LoggerClass logger = new LoggerClass(RoomDAO.class.getName());
+
 
     public Room readRoom(Room room){
         Room result = null;
         if(room != null){
-            result = connection.loadXMLRoom(room);
+            try {
+                result = connection.loadXMLRoom(room);
+            } catch (JAXBException | IllegalArgumentException e) {
+                logger.warning("Error reading room"+ room.getIdRoom() +".xml file");
+            } catch (Exception e){
+                logger.warning("An unexpected error has occurred");
+            }
         }
         return result;
     }
@@ -26,18 +31,14 @@ public class RoomDAO {
     public boolean writeRoom(Room room){
         boolean result = false;
         if(room != null){
-            connection.writeXMLRoom(room);
-            result = true;
-        }
-        return result;
-    }
-
-    public boolean writeMsg(Msg msg, Room room){
-        boolean result = false;
-        Room aux = connection.loadXMLRoom(room);
-        if(msg != null && aux != null){
-            aux.getMsgList().addMsg(msg);
-            connection.writeXMLRoom(aux);
+            try {
+                connection.writeXMLRoom(room);
+                result = true;
+            } catch (IOException | JAXBException e) {
+                logger.warning("Error reading room"+ room.getIdRoom() +".xml file");
+            } catch (Exception e){
+                logger.warning("An unexpected error has occurred");
+            }
         }
         return result;
     }
@@ -49,10 +50,9 @@ public class RoomDAO {
                 File roomFile = new File("room_"+room.getIdRoom()+".xml");
                 result = roomFile.delete();
             }catch (IllegalArgumentException e){
-                System.out.println("El archivo no existe");
-                e.printStackTrace();
+                logger.warning("File room_"+ room.getIdRoom() +".xml does not exist");
             }catch (Exception e) {
-                throw new RuntimeException(e);
+                logger.warning("An unexpected error has occurred");
             }
         }
         return result;
