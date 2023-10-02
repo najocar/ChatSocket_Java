@@ -16,81 +16,61 @@ public class ConnectionXML {
 
     public ConnectionXML() {}
 
-    public Rooms loadXMLRooms() {
+    public Rooms loadXMLRooms() throws IllegalArgumentException, JAXBException{
         Rooms result = null;
         if(fileRooms.exists()){
-            try {
-                JAXBContext jc = JAXBContext.newInstance(Rooms.class);
-                Unmarshaller unmarshaller = jc.createUnmarshaller();
-                result = (Rooms) unmarshaller.unmarshal(fileRooms);
-            } catch (IllegalArgumentException | JAXBException e) {
-                e.printStackTrace();
-            }
+            JAXBContext jc = JAXBContext.newInstance(Rooms.class);
+            Unmarshaller unmarshaller = jc.createUnmarshaller();
+            result = (Rooms) unmarshaller.unmarshal(fileRooms);
         }
         return result;
     }
 
-    public void writeXMLRooms(Rooms rooms) {
+    public void writeXMLRooms(Rooms rooms) throws JAXBException, IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileRooms))) {
             JAXBContext jc = JAXBContext.newInstance(Rooms.class);
             Marshaller marshaller = jc.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(rooms, writer);
-        } catch (JAXBException | IOException e) {
-            e.printStackTrace();
         }
     }
 
-    public void writeXMLUser(Users userList) {
+    public void writeXMLUser(Users userList) throws JAXBException, IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileUsers))) {
             JAXBContext jc = JAXBContext.newInstance(Users.class);
             Marshaller marshaller = jc.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(userList, writer);
-        } catch (JAXBException | IOException e) {
-            e.printStackTrace();
         }
     }
 
-    public Users loadXMLUsers() {
+    public Users loadXMLUsers() throws IllegalArgumentException, JAXBException{
         Users result = null;
         if(fileUsers.exists()){
-            try {
-                JAXBContext jc = JAXBContext.newInstance(Users.class);
-                Unmarshaller unmarshaller = jc.createUnmarshaller();
-                result = (Users) unmarshaller.unmarshal(fileUsers);
-            } catch (IllegalArgumentException | JAXBException e) {
-                e.printStackTrace();
-            }
+            JAXBContext jc = JAXBContext.newInstance(Users.class);
+            Unmarshaller unmarshaller = jc.createUnmarshaller();
+            result = (Users) unmarshaller.unmarshal(fileUsers);
         }
         return result;
     }
 
-    public Room loadXMLRoom(Room room) {
+    public Room loadXMLRoom(Room room) throws IllegalArgumentException, JAXBException{
         Room result = null;
         if(room != null){
-            try {
-                JAXBContext jc = JAXBContext.newInstance(Room.class);
-                Unmarshaller unmarshaller = jc.createUnmarshaller();
-                result = (Room) unmarshaller.unmarshal(new File("room_"+room.getIdRoom()+".xml"));
-            }catch (IllegalArgumentException | JAXBException e) {
-                e.printStackTrace();
-            }
+            JAXBContext jc = JAXBContext.newInstance(Room.class);
+            Unmarshaller unmarshaller = jc.createUnmarshaller();
+            result = (Room) unmarshaller.unmarshal(new File("room_"+room.getIdRoom()+".xml"));
         }
         return result;
     }
 
-    public void writeXMLRoom(Room room){
+    public void writeXMLRoom(Room room) throws IOException, JAXBException{
         if(room != null){
             try (FileWriter writer = new FileWriter("room_"+room.getIdRoom()+".xml")){
                 JAXBContext jc = JAXBContext.newInstance(Room.class);
                 Marshaller marshaller = jc.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
                 marshaller.marshal(room, writer);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JAXBException e) {
-                throw new RuntimeException(e);
             }
         }
     }

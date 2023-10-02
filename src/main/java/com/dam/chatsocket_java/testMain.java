@@ -23,7 +23,7 @@ public class testMain {
     static LoggerClass logger = new LoggerClass(testMain.class.getName());
 
     public static void main(String[] args) {
-
+        logger.info("Logger prueba");
         for(RoomsDataDTO aux: testRoomDataDTO()){
             System.out.println(aux);
         }
