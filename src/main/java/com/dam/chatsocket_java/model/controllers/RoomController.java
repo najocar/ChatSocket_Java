@@ -1,7 +1,7 @@
 package com.dam.chatsocket_java.model.controllers;
 
 import com.dam.chatsocket_java.App;
-import com.dam.chatsocket_java.model.DAOs.UsersDAO;
+import com.dam.chatsocket_java.model.dao.UsersDAO;
 import com.dam.chatsocket_java.model.domain.Msg;
 import com.dam.chatsocket_java.model.domain.User;
 import javafx.collections.FXCollections;

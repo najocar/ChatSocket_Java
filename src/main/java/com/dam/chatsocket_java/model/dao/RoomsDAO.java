@@ -1,5 +1,6 @@
 package com.dam.chatsocket_java.model.dao;
 
+import com.dam.chatsocket_java.model.connections.ConnectionXML;
 import com.dam.chatsocket_java.model.domain.Room;
 import com.dam.chatsocket_java.model.domain.Rooms;
 
