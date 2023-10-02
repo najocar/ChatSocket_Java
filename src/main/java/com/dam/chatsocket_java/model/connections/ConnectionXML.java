@@ -1,12 +1,10 @@
 package com.dam.chatsocket_java.model.connections;
 
+import com.dam.chatsocket_java.model.domain.Room;
 import com.dam.chatsocket_java.model.domain.Rooms;
 import com.dam.chatsocket_java.model.domain.Users;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -25,7 +23,7 @@ public class ConnectionXML {
                 JAXBContext jc = JAXBContext.newInstance(Rooms.class);
                 Unmarshaller unmarshaller = jc.createUnmarshaller();
                 result = (Rooms) unmarshaller.unmarshal(fileRooms);
-            } catch (JAXBException e) {
+            } catch (IllegalArgumentException | JAXBException e) {
                 e.printStackTrace();
             }
         }
@@ -61,12 +59,40 @@ public class ConnectionXML {
                 JAXBContext jc = JAXBContext.newInstance(Users.class);
                 Unmarshaller unmarshaller = jc.createUnmarshaller();
                 result = (Users) unmarshaller.unmarshal(fileUsers);
-            } catch (JAXBException e) {
+            } catch (IllegalArgumentException | JAXBException e) {
                 e.printStackTrace();
             }
         }
         return result;
     }
 
+    public Room loadXMLRoom(Room room) {
+        Room result = null;
+        if(room != null){
+            try {
+                JAXBContext jc = JAXBContext.newInstance(Room.class);
+                Unmarshaller unmarshaller = jc.createUnmarshaller();
+                result = (Room) unmarshaller.unmarshal(new File("room_"+room.getIdRoom()+".xml"));
+            }catch (IllegalArgumentException | JAXBException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
+
+    public void writeXMLRoom(Room room){
+        if(room != null){
+            try (FileWriter writer = new FileWriter("room_"+room.getIdRoom()+".xml")){
+                JAXBContext jc = JAXBContext.newInstance(Room.class);
+                Marshaller marshaller = jc.createMarshaller();
+                marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+                marshaller.marshal(room, writer);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JAXBException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
 }
