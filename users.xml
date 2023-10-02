@@ -2,10 +2,18 @@
 <users>
     <user>
         <name>usuario1</name>
-        <currentRoom>0</currentRoom>
+        <currentRoom>1</currentRoom>
     </user>
     <user>
         <name>usuario2</name>
+        <currentRoom>1</currentRoom>
+    </user>
+    <user>
+        <name>usuario3</name>
+        <currentRoom>2</currentRoom>
+    </user>
+    <user>
+        <name>usuario4</name>
         <currentRoom>0</currentRoom>
     </user>
 </users>

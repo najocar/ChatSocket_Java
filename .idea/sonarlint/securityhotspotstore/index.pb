@@ -1,17 +1,19 @@
 
-k
-;src/main/java/com/dam/chatsocket_java/model/domain/Msg.java,0\a\0a203858b5b6504e7b186d03ad60a16e84e4e73c
 i
 9src/main/java/com/dam/chatsocket_java/model/testMain.java,4\3\438ace2b6e84a91bc47d127c9fcdb835fa86f666
-^
-.src/main/java/com/dam/chatsocket_java/App.java,c\7\c7aa9d1972c6caccab0bed9a302e86f6f391558c
-z
-Jsrc/main/java/com/dam/chatsocket_java/model/connections/ConnectionXML.java,4\0\40e249f24cc4fd43c6645b146861cd8c2e0cafa1
-l
-<src/main/java/com/dam/chatsocket_java/model/domain/User.java,3\3\338a01eecb8e05309262e049fe3220545ae0a2ed
+9
+	rooms.xml,0\6\063160dd5bcf5b95e2e4641d29318fc6902da9d6
+m
+=src/main/java/com/dam/chatsocket_java/model/domain/Rooms.java,6\4\642c1895345f528bfacb11eb9236d4ad0eff15e1
+9
+	users.xml,6\6\66ddc04cb5c8614b92766ffac2e4fcff6eb3bcd5
 l
 <src/main/java/com/dam/chatsocket_java/model/domain/Room.java,7\f\7f479b9eb318eecb3f166333379de70fc7201223
-{
-Ksrc/main/java/com/dam/chatsocket_java/model/controllers/HomeController.java,d\8\d80623b155f7666844fec6221748952d6aa142bd
-{
-Ksrc/main/java/com/dam/chatsocket_java/model/controllers/RoomController.java,8\f\8f038051167632a2b77eef7ef3cd56598956fb58
+n
+>src/main/java/com/dam/chatsocket_java/model/DAOs/RoomsDAO.java,d\8\d8398cee0dc694c5630b6b1604bafd4618f1e882
+l
+<src/main/java/com/dam/chatsocket_java/model/domain/User.java,3\3\338a01eecb8e05309262e049fe3220545ae0a2ed
+m
+=src/main/java/com/dam/chatsocket_java/model/DAOs/RoomDAO.java,9\e\9eec5bbbac91303a39df2c9ae07d6f1d09ace2e9
+z
+Jsrc/main/java/com/dam/chatsocket_java/model/connections/ConnectionXML.java,4\0\40e249f24cc4fd43c6645b146861cd8c2e0cafa1
