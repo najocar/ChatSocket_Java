@@ -8,16 +8,19 @@ import com.dam.chatsocket_java.model.domain.User;
 import com.dam.chatsocket_java.model.domain.Users;
 import com.dam.chatsocket_java.model.dto.RoomsDataDTO;
 import com.dam.chatsocket_java.model.dto.UserDTO;
+import com.dam.chatsocket_java.utils.LoggerClass;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class testMain {
+
 
     static UsersDAO usersDAO = new UsersDAO(); // finalizado
     static RoomsDAO roomsDAO = new RoomsDAO(); // finalizado
     static RoomDAO roomDAO = new RoomDAO(); // finalizado
+
+    static LoggerClass logger = new LoggerClass(testMain.class.getName());
 
     public static void main(String[] args) {
 
@@ -41,7 +44,6 @@ public class testMain {
             }
             result.add(new RoomsDataDTO(room, userLenght));
         }
-
         return result;
     }
 }
