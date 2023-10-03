@@ -2,7 +2,7 @@ package com.dam.chatsocket_java.model.dao;
 
 import com.dam.chatsocket_java.model.connections.ConnectionXML;
 import com.dam.chatsocket_java.model.domain.User;
-import com.dam.chatsocket_java.model.domain.Users;
+import com.dam.chatsocket_java.model.domain.UsersList;
 import com.dam.chatsocket_java.utils.LoggerClass;
 
 import javax.xml.bind.JAXBException;
@@ -22,7 +22,7 @@ public class UsersDAO {
     public boolean writeUser(User user){
         boolean result = false;
             try {
-                Users userList = con.loadXMLUsers();
+                UsersList userList = con.loadXMLUsers();
                 if(user != null && userList != null){
                     userList.setUser(user);
                     con.writeXMLUser(userList);
@@ -42,7 +42,7 @@ public class UsersDAO {
      * @return boolean
      * true if success
      */
-    public boolean writeUser(Users users){
+    public boolean writeUser(UsersList users){
         boolean result = false;
         if(users != null) {
             try {
@@ -61,8 +61,8 @@ public class UsersDAO {
      * Method read all users to users.xml file
      * @return Users
      */
-    public Users readUsers(){
-        Users result = new Users();
+    public UsersList readUsers(){
+        UsersList result = new UsersList();
         try {
             result = con.loadXMLUsers();
         } catch (JAXBException e) {
@@ -80,7 +80,7 @@ public class UsersDAO {
     public boolean removeUser(User user){
         boolean result = false;
             try {
-                Users aux = con.loadXMLUsers();
+                UsersList aux = con.loadXMLUsers();
                 if(user != null && aux != null){
                     aux.getUsers().remove(user);
                     con.writeXMLUser(aux);

@@ -1,13 +1,11 @@
 package com.dam.chatsocket_java.model.controllers;
 
 import com.dam.chatsocket_java.App;
-import com.dam.chatsocket_java.model.dao.RoomDAO;
 import com.dam.chatsocket_java.model.dao.RoomsDAO;
 import com.dam.chatsocket_java.model.dao.UsersDAO;
-import com.dam.chatsocket_java.model.domain.Msg;
-import com.dam.chatsocket_java.model.domain.Rooms;
+import com.dam.chatsocket_java.model.domain.RoomsList;
 import com.dam.chatsocket_java.model.domain.User;
-import com.dam.chatsocket_java.model.domain.Users;
+import com.dam.chatsocket_java.model.domain.UsersList;
 import com.dam.chatsocket_java.model.dto.RoomsDataDTO;
 import com.dam.chatsocket_java.model.dto.UserDTO;
 import javafx.collections.FXCollections;
@@ -122,8 +120,8 @@ public class HomeController implements Initializable {
 
     public List<RoomsDataDTO> getAllRooms(){
         List<RoomsDataDTO> result = new ArrayList<>();
-        Users usuarios = usersDao.readUsers();
-        Rooms rooms = roomsDao.readRooms();
+        UsersList usuarios = usersDao.readUsers();
+        RoomsList rooms = roomsDao.readRooms();
 
         for(String room: rooms.getRooms()){
             int userLenght = 0;
