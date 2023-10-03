@@ -13,6 +13,12 @@ public class RoomsDAO implements Serializable {
     private static ConnectionXML connection = new ConnectionXML();
     static LoggerClass logger = new LoggerClass(RoomsDAO.class.getName());
 
+    /**
+     * Method to write room in rooms.xml file passed by param
+     * @param room
+     * @return boolean
+     * true if success
+     */
     public boolean writeRoom(Room room){
         boolean result = false;
         try{
@@ -31,6 +37,12 @@ public class RoomsDAO implements Serializable {
         return result;
     }
 
+    /**
+     * Method to overwrite rooms.xml file passed by param
+     * @param rooms
+     * @return boolean
+     * true if success
+     */
     public boolean writeRoom(Rooms rooms){
         boolean result = false;
         if(rooms != null){
@@ -46,6 +58,10 @@ public class RoomsDAO implements Serializable {
         return result;
     }
 
+    /**
+     * Method to read all rooms to rooms.xml file
+     * @return Rooms
+     */
     public Rooms readRooms(){
         Rooms result = new Rooms();
         try {
@@ -58,6 +74,12 @@ public class RoomsDAO implements Serializable {
         return result;
     }
 
+    /**
+     * Method to remove room to rooms.xml file passed by param
+     * @param room
+     * @return boolean
+     * true if success
+     */
     public boolean removeRoom(Room room){
         boolean result = false;
         try {

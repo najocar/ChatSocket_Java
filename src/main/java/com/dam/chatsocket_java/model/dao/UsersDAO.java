@@ -13,7 +13,12 @@ public class UsersDAO {
     static ConnectionXML con = new ConnectionXML();
     static LoggerClass logger = new LoggerClass(UsersDAO.class.getName());
 
-
+    /**
+     * Method to write user passed by param in users.xml file
+     * @param user
+     * @return boolean
+     * true if success
+     */
     public boolean writeUser(User user){
         boolean result = false;
             try {
@@ -31,6 +36,12 @@ public class UsersDAO {
         return result;
     }
 
+    /**
+     * Method overwrite users.xml file passed by param
+     * @param users
+     * @return boolean
+     * true if success
+     */
     public boolean writeUser(Users users){
         boolean result = false;
         if(users != null) {
@@ -46,6 +57,10 @@ public class UsersDAO {
         return result;
     }
 
+    /**
+     * Method read all users to users.xml file
+     * @return Users
+     */
     public Users readUsers(){
         Users result = new Users();
         try {
@@ -56,6 +71,12 @@ public class UsersDAO {
         return result;
     }
 
+    /**
+     * Method to remove user passed by param in users.xml file
+     * @param user
+     * @return boolean
+     * true if success
+     */
     public boolean removeUser(User user){
         boolean result = false;
             try {
@@ -73,6 +94,12 @@ public class UsersDAO {
         return result;
     }
 
+    /**
+     * Method that checks if the user passed by the parameter exists.
+     * @param name
+     * @return boolean
+     * true if success
+     */
     public boolean userExist(String name) {
         List<User> allUsers = readUsers().getUsers();
         for (User user: allUsers) {
