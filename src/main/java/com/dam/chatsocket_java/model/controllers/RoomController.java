@@ -3,10 +3,7 @@ package com.dam.chatsocket_java.model.controllers;
 import com.dam.chatsocket_java.App;
 import com.dam.chatsocket_java.model.dao.RoomDAO;
 import com.dam.chatsocket_java.model.dao.UsersDAO;
-import com.dam.chatsocket_java.model.domain.Msg;
-import com.dam.chatsocket_java.model.domain.Msgs;
-import com.dam.chatsocket_java.model.domain.Room;
-import com.dam.chatsocket_java.model.domain.User;
+import com.dam.chatsocket_java.model.domain.*;
 import com.dam.chatsocket_java.model.dto.UserDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,7 +39,7 @@ public class RoomController implements Initializable {
     @FXML
     private TableColumn dateColumn;
     @FXML
-    private TableView<Msg> userTable;
+    private TableView<User> userTable;
     @FXML
     private TableColumn allUserColumn;
 
@@ -56,6 +53,7 @@ public class RoomController implements Initializable {
 
 
     RoomDAO roomDAO = new RoomDAO();
+    UsersDAO usersDAO = new UsersDAO();
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -78,13 +76,19 @@ public class RoomController implements Initializable {
         usuarios = FXCollections.observableArrayList();
         this.allUserColumn.setCellValueFactory(new PropertyValueFactory("name"));
 
-        generateMsgTable();
+        reloadTables();
+    }
+
+    public void reloadTables(){
+        generateMsgTable(UserDTO.getUser().getCurrentRoom());
+        generateUserTable(UserDTO.getUser().getCurrentRoom());
     }
 
 
     public void closeWindow(ActionEvent event) {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
+        usersDAO.removeUser(UserDTO.getUser());
         stage.close();
     }
 
@@ -96,7 +100,7 @@ public class RoomController implements Initializable {
 
     public void goBack() {
         try {
-            App.setRoot("home");
+            App.setRoot("changeRoom");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,36 +110,30 @@ public class RoomController implements Initializable {
         String text = msgArea.getText();
         Msg msg = new Msg(UserDTO.getUser().getName(), text, LocalDate.now());
         Room room = roomDAO.readRoom(new Room(UserDTO.getUser().getCurrentRoom()));
-        Msgs msgs = new Msgs();
+        Msgs msgs = room.getMsgList();
         msgs.addMsg(msg);
         room.setMsgList(msgs);
         roomDAO.writeRoom(room);
+        clearField();
+        reloadTables();
+    }
+
+    public void clearField(){
+        msgArea.setText("");
     }
 
     @FXML
-    public void generateMsgTable() {
-        List<Msg> aux = null;
-//        try {
-//            aux = cdao.findAll();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        clases.setAll(aux);
-//
-//        this.msgTable.setItems(clases);
+    public void generateMsgTable(int room) {
+
+        mensajes.setAll(roomDAO.readRoom(new Room(room)).getMsgList().getMsgs());
+
+        this.msgTable.setItems(mensajes);
     }
 
     @FXML
-    public void generateUserTable() {
-        List<User> aux = null;
-//        try {
-//            aux = cdao.findAll();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        clases.setAll(aux);
-//
-//        this.msgTable.setItems(clases);
+    public void generateUserTable(int room) {
+        usuarios.setAll(usersDAO.readUsers().usersInRoom(room));
+        this.userTable.setItems(usuarios);
     }
 
 }

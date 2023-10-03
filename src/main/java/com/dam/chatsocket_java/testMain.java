@@ -24,7 +24,7 @@ public class testMain {
     static LoggerClass logger = new LoggerClass(testMain.class.getName());
 
     public static void main(String[] args) {
-        roomDAO.writeRoom(new Room(1));
+        roomDAO.writeRoom(new Room(2));
 
     }
 
