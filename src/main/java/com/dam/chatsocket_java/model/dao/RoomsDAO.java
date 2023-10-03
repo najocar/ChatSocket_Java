@@ -2,7 +2,7 @@ package com.dam.chatsocket_java.model.dao;
 
 import com.dam.chatsocket_java.model.connections.ConnectionXML;
 import com.dam.chatsocket_java.model.domain.Room;
-import com.dam.chatsocket_java.model.domain.Rooms;
+import com.dam.chatsocket_java.model.domain.RoomsList;
 import com.dam.chatsocket_java.utils.LoggerClass;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class RoomsDAO implements Serializable {
     public boolean writeRoom(Room room){
         boolean result = false;
         try{
-            Rooms aux = connection.loadXMLRooms();
+            RoomsList aux = connection.loadXMLRooms();
             if(room != null && aux != null){
                 aux.getRooms().add(String.valueOf(room.getIdRoom()));
                 connection.writeXMLRooms(aux);
@@ -43,7 +43,7 @@ public class RoomsDAO implements Serializable {
      * @return boolean
      * true if success
      */
-    public boolean writeRoom(Rooms rooms){
+    public boolean writeRoom(RoomsList rooms){
         boolean result = false;
         if(rooms != null){
             try {
@@ -62,8 +62,8 @@ public class RoomsDAO implements Serializable {
      * Method to read all rooms to rooms.xml file
      * @return Rooms
      */
-    public Rooms readRooms(){
-        Rooms result = new Rooms();
+    public RoomsList readRooms(){
+        RoomsList result = new RoomsList();
         try {
             result = connection.loadXMLRooms();
         } catch (JAXBException | IllegalArgumentException e) {
@@ -83,7 +83,7 @@ public class RoomsDAO implements Serializable {
     public boolean removeRoom(Room room){
         boolean result = false;
         try {
-            Rooms aux = connection.loadXMLRooms();
+            RoomsList aux = connection.loadXMLRooms();
             if(room != null && aux != null){
                 aux.getRooms().remove(String.valueOf(room.getIdRoom()));
                 connection.writeXMLRooms(aux);

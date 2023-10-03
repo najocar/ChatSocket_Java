@@ -9,16 +9,16 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "msgs")
-public class Msgs {
+public class MsgsList {
 
     @XmlElement(name = "msg", type=Msg.class)
     private List<Msg> msgs;
 
-    public Msgs(){
+    public MsgsList(){
         this.msgs = new ArrayList<>();
     }
 
-    public Msgs(List<Msg> msgList){
+    public MsgsList(List<Msg> msgList){
         this.msgs = msgList;
     }
 
@@ -30,7 +30,7 @@ public class Msgs {
         this.msgs = msgs;
     }
 
-    public void setMsgs(Msgs msgs){
+    public void setMsgs(MsgsList msgs){
         this.msgs = msgs.getMsgs();
     }
 

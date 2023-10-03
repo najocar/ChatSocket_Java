@@ -10,16 +10,16 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "rooms")
-public class Rooms implements Serializable {
+public class RoomsList implements Serializable {
 
     @XmlElement(name = "room", type=String.class)
     private List<String> roomsId;
 
-    public Rooms() {
+    public RoomsList() {
         this.roomsId = new ArrayList<>();
     }
 
-    public Rooms(List<String> roomList) {
+    public RoomsList(List<String> roomList) {
         this.roomsId = roomList;
     }
 
@@ -31,7 +31,7 @@ public class Rooms implements Serializable {
         this.roomsId = roomsId;
     }
 
-    public void setRoom(Rooms rooms){
+    public void setRoom(RoomsList rooms){
         this.roomsId = rooms.getRooms();
     }
 

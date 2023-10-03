@@ -1,8 +1,8 @@
 package com.dam.chatsocket_java.model.connections;
 
 import com.dam.chatsocket_java.model.domain.Room;
-import com.dam.chatsocket_java.model.domain.Rooms;
-import com.dam.chatsocket_java.model.domain.Users;
+import com.dam.chatsocket_java.model.domain.RoomsList;
+import com.dam.chatsocket_java.model.domain.UsersList;
 
 import javax.xml.bind.*;
 import java.io.BufferedWriter;
@@ -22,12 +22,12 @@ public class ConnectionXML {
      * @throws IllegalArgumentException
      * @throws JAXBException
      */
-    public Rooms loadXMLRooms() throws IllegalArgumentException, JAXBException{
-        Rooms result = null;
+    public RoomsList loadXMLRooms() throws IllegalArgumentException, JAXBException{
+        RoomsList result = null;
         if(fileRooms.exists()){
-            JAXBContext jc = JAXBContext.newInstance(Rooms.class);
+            JAXBContext jc = JAXBContext.newInstance(RoomsList.class);
             Unmarshaller unmarshaller = jc.createUnmarshaller();
-            result = (Rooms) unmarshaller.unmarshal(fileRooms);
+            result = (RoomsList) unmarshaller.unmarshal(fileRooms);
         }
         return result;
     }
@@ -38,9 +38,9 @@ public class ConnectionXML {
      * @throws JAXBException
      * @throws IOException
      */
-    public void writeXMLRooms(Rooms rooms) throws JAXBException, IOException {
+    public void writeXMLRooms(RoomsList rooms) throws JAXBException, IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileRooms))) {
-            JAXBContext jc = JAXBContext.newInstance(Rooms.class);
+            JAXBContext jc = JAXBContext.newInstance(RoomsList.class);
             Marshaller marshaller = jc.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(rooms, writer);
@@ -53,9 +53,9 @@ public class ConnectionXML {
      * @throws JAXBException
      * @throws IOException
      */
-    public void writeXMLUser(Users userList) throws JAXBException, IOException {
+    public void writeXMLUser(UsersList userList) throws JAXBException, IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileUsers))) {
-            JAXBContext jc = JAXBContext.newInstance(Users.class);
+            JAXBContext jc = JAXBContext.newInstance(UsersList.class);
             Marshaller marshaller = jc.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(userList, writer);
@@ -68,12 +68,12 @@ public class ConnectionXML {
      * @throws IllegalArgumentException
      * @throws JAXBException
      */
-    public Users loadXMLUsers() throws IllegalArgumentException, JAXBException{
-        Users result = null;
+    public UsersList loadXMLUsers() throws IllegalArgumentException, JAXBException{
+        UsersList result = null;
         if(fileUsers.exists()){
-            JAXBContext jc = JAXBContext.newInstance(Users.class);
+            JAXBContext jc = JAXBContext.newInstance(UsersList.class);
             Unmarshaller unmarshaller = jc.createUnmarshaller();
-            result = (Users) unmarshaller.unmarshal(fileUsers);
+            result = (UsersList) unmarshaller.unmarshal(fileUsers);
         }
         return result;
     }

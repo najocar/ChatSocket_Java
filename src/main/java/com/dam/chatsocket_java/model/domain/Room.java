@@ -6,8 +6,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -15,17 +13,17 @@ import java.util.Objects;
 public class Room implements Serializable {
     int idRoom;
 
-    @XmlElement(name = "msgs", type=Msgs.class)
-    Msgs msgList;
+    @XmlElement(name = "msgs", type= MsgsList.class)
+    MsgsList msgList;
 
     public Room(int idRoom) {
         this.idRoom = idRoom;
-        this.msgList = new Msgs();
+        this.msgList = new MsgsList();
     }
 
     public Room() {
         this.idRoom = 0;
-        this.msgList = new Msgs();
+        this.msgList = new MsgsList();
     }
 
     public int getIdRoom() {
@@ -36,11 +34,11 @@ public class Room implements Serializable {
         this.idRoom = idRoom;
     }
 
-    public Msgs getMsgList() {
+    public MsgsList getMsgList() {
         return msgList;
     }
 
-    public void setMsgList(Msgs msgList) {
+    public void setMsgList(MsgsList msgList) {
         this.msgList = msgList;
     }
 

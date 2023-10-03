@@ -9,16 +9,16 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "users")
-public class Users {
+public class UsersList {
 
     @XmlElement(name = "user", type=User.class)
     private List<User> users;
 
-    public Users(){
+    public UsersList(){
         this.users = new ArrayList<>();
     }
 
-    public Users(List<User> userList){
+    public UsersList(List<User> userList){
         this.users = userList;
     }
 

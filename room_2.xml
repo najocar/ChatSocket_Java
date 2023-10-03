@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <room>
     <idRoom>2</idRoom>
-    <msgs/>
+    <msgs>
+        <msg>
+            <user>usuariossss</user>
+            <msgContent>hola mundo</msgContent>
+            <date>2023-10-03</date>
+        </msg>
+    </msgs>
 </room>
