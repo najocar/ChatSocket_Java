@@ -1,9 +1,13 @@
 package com.dam.chatsocket_java.model.controllers;
 
 import com.dam.chatsocket_java.App;
+import com.dam.chatsocket_java.model.dao.RoomDAO;
 import com.dam.chatsocket_java.model.dao.UsersDAO;
 import com.dam.chatsocket_java.model.domain.Msg;
+import com.dam.chatsocket_java.model.domain.Msgs;
+import com.dam.chatsocket_java.model.domain.Room;
 import com.dam.chatsocket_java.model.domain.User;
+import com.dam.chatsocket_java.model.dto.UserDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -48,6 +53,9 @@ public class RoomController implements Initializable {
     private ObservableList<User> usuarios;
     private double xOffset = 0;
     private double yOffset = 0;
+
+
+    RoomDAO roomDAO = new RoomDAO();
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -95,7 +103,13 @@ public class RoomController implements Initializable {
     }
 
     public void send() {
-
+        String text = msgArea.getText();
+        Msg msg = new Msg(UserDTO.getUser().getName(), text, LocalDate.now());
+        Room room = roomDAO.readRoom(new Room(UserDTO.getUser().getCurrentRoom()));
+        Msgs msgs = new Msgs();
+        msgs.addMsg(msg);
+        room.setMsgList(msgs);
+        roomDAO.writeRoom(room);
     }
 
     @FXML

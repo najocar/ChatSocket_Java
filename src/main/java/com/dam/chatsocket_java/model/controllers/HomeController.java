@@ -1,10 +1,16 @@
 package com.dam.chatsocket_java.model.controllers;
 
 import com.dam.chatsocket_java.App;
+import com.dam.chatsocket_java.model.dao.RoomDAO;
+import com.dam.chatsocket_java.model.dao.RoomsDAO;
 import com.dam.chatsocket_java.model.dao.UsersDAO;
 import com.dam.chatsocket_java.model.domain.Msg;
 import com.dam.chatsocket_java.model.domain.Rooms;
 import com.dam.chatsocket_java.model.domain.User;
+import com.dam.chatsocket_java.model.domain.Users;
+import com.dam.chatsocket_java.model.dto.RoomsDataDTO;
+import com.dam.chatsocket_java.model.dto.UserDTO;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,11 +20,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
@@ -32,19 +41,20 @@ public class HomeController implements Initializable {
     @FXML
     private Button btnEnter;
     @FXML
-    private TableView<Rooms> roomTable; //cambiar al dto
+    private TableView<RoomsDataDTO> roomTable; //cambiar al dto
     @FXML
     private TableColumn nameColumn;
     @FXML
     private TableColumn usersColumn;
 
 
-    private ObservableList<User> rooms; //cambiar al dto
+    private ObservableList<RoomsDataDTO> rooms; //cambiar al dto
 
     private double xOffset = 0;
     private double yOffset = 0;
 
     private UsersDAO usersDao = new UsersDAO();
+    private RoomsDAO roomsDao = new RoomsDAO();
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -58,6 +68,12 @@ public class HomeController implements Initializable {
             stage.setX(event.getScreenX() - xOffset);
             stage.setY(event.getScreenY() - yOffset);
         });
+
+        rooms = FXCollections.observableArrayList();
+        this.nameColumn.setCellValueFactory(new PropertyValueFactory("roomName"));
+        this.usersColumn.setCellValueFactory(new PropertyValueFactory("usersLenght"));
+
+        generateRoomsTable();
     }
 
 
@@ -75,7 +91,10 @@ public class HomeController implements Initializable {
 
     public void goRoom() {
         try {
-            if (validateName(fieldUser.getText())){
+            if (validateName(fieldUser.getText()) && selectRoom() != ""){
+
+                controlUser(fieldUser.getText(), Integer.parseInt(selectRoom()));
+                System.out.println(UserDTO.getUser());
                 App.setRoot("room");
             }else {
                 // usuario existe
@@ -86,13 +105,55 @@ public class HomeController implements Initializable {
         }
     }
 
+    public void controlUser(String name, int room) {
+        User user = new User(fieldUser.getText());
+        user.setCurrentRoom(room);
+
+        UserDTO.setUser(user);
+        usersDao.writeUser(user);
+    }
+
     public boolean validateName(String name) {
         if (!name.isEmpty() && !usersDao.userExist(name)){
-            usersDao.writeUser(new User(name));
             return true;
         }
         return false;
     }
 
+    public List<RoomsDataDTO> getAllRooms(){
+        List<RoomsDataDTO> result = new ArrayList<>();
+        Users usuarios = usersDao.readUsers();
+        Rooms rooms = roomsDao.readRooms();
+
+        for(String room: rooms.getRooms()){
+            int userLenght = 0;
+            for(User user: usuarios.getUsers()){
+                if(room.equals(String.valueOf(user.getCurrentRoom()))){
+                    userLenght++;
+                }
+            }
+            result.add(new RoomsDataDTO(room, userLenght));
+        }
+        return result;
+    }
+
+    @FXML
+    public void generateRoomsTable() {
+        List<RoomsDataDTO> aux = getAllRooms();
+        rooms.setAll(aux);
+        this.roomTable.setItems(rooms);
+    }
+
+    @FXML
+    public String selectRoom(){
+        String result = "";
+        RoomsDataDTO aux = this.roomTable.getSelectionModel().getSelectedItem();
+        if (aux != null){
+            result = aux.getRoomName();
+        }else {
+            System.out.println("selecciona sala");
+        }
+        return result;
+    }
 
 }

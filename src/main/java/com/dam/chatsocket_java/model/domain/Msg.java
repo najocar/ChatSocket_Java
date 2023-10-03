@@ -14,12 +14,11 @@ import com.dam.chatsocket_java.model.connections.LocalDateAdapter;
 public class Msg implements Serializable {
     private String user;
     private String msgContent;
-
     @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate date;
 
-    public Msg(User user, String msgContent, LocalDate date) {
-        this.user = user.getName();
+    public Msg(String user, String msgContent, LocalDate date) {
+        this.user = user;
         this.msgContent = msgContent;
         this.date = date;
     }

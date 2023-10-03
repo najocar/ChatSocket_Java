@@ -14,4 +14,6 @@ module com.dam.chatsocket_java {
     exports com.dam.chatsocket_java.model.controllers;
     opens com.dam.chatsocket_java.model.controllers to javafx.fxml;
 
+    opens com.dam.chatsocket_java.model.dto to javafx.base;
+
 }
