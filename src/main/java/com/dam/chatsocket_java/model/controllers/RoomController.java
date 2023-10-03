@@ -76,6 +76,7 @@ public class RoomController implements Initializable {
         this.allUserColumn.setCellValueFactory(new PropertyValueFactory("name"));
 
         reloadTables();
+        refreshTables(() -> reloadTables());
     }
 
     public void reloadTables(){
@@ -135,4 +136,18 @@ public class RoomController implements Initializable {
         this.userTable.setItems(usuarios);
     }
 
+    public void refreshTables(Runnable runnable) {
+        new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(1000);
+                    runnable.run();
+                } catch (Exception e) {
+                    System.err.println(e);
+                    Thread.currentThread().interrupt();
+                    break; // Sale del bucle si se interrumpe el hilo
+                }
+            }
+        }).start();
+    }
 }

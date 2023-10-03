@@ -7,5 +7,15 @@
             <msgContent>hola mundo</msgContent>
             <date>2023-10-03</date>
         </msg>
+        <msg>
+            <user>pepito</user>
+            <msgContent>hola</msgContent>
+            <date>2023-10-03</date>
+        </msg>
+        <msg>
+            <user>manolito</user>
+            <msgContent>asdfasdfas</msgContent>
+            <date>2023-10-03</date>
+        </msg>
     </msgs>
 </room>
