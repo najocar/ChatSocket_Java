@@ -40,4 +40,14 @@ public class Users {
                 "users=" + users +
                 '}';
     }
+
+    public List<User> usersInRoom(int room) {
+        List<User> inRoom = new ArrayList<>();
+        for (User user: users) {
+            if (user.getCurrentRoom() == room){
+                inRoom.add(user);
+            }
+        }
+        return inRoom;
+    }
 }
