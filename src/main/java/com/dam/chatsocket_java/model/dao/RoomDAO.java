@@ -13,7 +13,11 @@ public class RoomDAO {
     ConnectionXML connection = new ConnectionXML();
     static LoggerClass logger = new LoggerClass(RoomDAO.class.getName());
 
-
+    /**
+     * Method to read room passed by param
+     * @param room
+     * @return Room
+     */
     public Room readRoom(Room room){
         Room result = null;
         if(room != null){
@@ -28,6 +32,12 @@ public class RoomDAO {
         return result;
     }
 
+    /**
+     * Method to write room in xml file passed by param
+     * @param room
+     * @return boolean
+     * true if success
+     */
     public boolean writeRoom(Room room){
         boolean result = false;
         if(room != null){
@@ -43,6 +53,12 @@ public class RoomDAO {
         return result;
     }
 
+    /**
+     * Method to remove xml file passed by param
+     * @param room
+     * @return boolean
+     * true if success
+     */
     public boolean removeRoom(Room room){
         boolean result = false;
         if(room != null){
