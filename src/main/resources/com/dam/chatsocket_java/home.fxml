@@ -5,11 +5,18 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.chatsocket_java.model.controllers.HomeController">
+   <ImageView fitHeight="770.0" fitWidth="1125.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@img/background.png" />
+      </image>
+   </ImageView>
     <Pane fx:id="navbar" prefHeight="54.0" prefWidth="1000.0" style="-fx-background-color: #ACC2C5; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.3), 10, 0.1, 0.0, 0.0 );" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
             <Button fx:id="closeButton" layoutX="961.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 5px;" text="X" />

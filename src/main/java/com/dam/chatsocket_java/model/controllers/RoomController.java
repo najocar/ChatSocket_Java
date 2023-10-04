@@ -49,6 +49,7 @@ public class RoomController implements Initializable {
     private ObservableList<User> usuarios;
     private double xOffset = 0;
     private double yOffset = 0;
+    private boolean finish = true;
 
 
     RoomDAO roomDAO = new RoomDAO();
@@ -89,6 +90,7 @@ public class RoomController implements Initializable {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         usersDAO.removeUser(UserDTO.getUser());
+        finish = false;
         stage.close();
     }
 
@@ -138,12 +140,11 @@ public class RoomController implements Initializable {
 
     public void refreshTables(Runnable runnable) {
         new Thread(() -> {
-            while (true) {
+            while (finish) {
                 try {
                     Thread.sleep(1000);
                     runnable.run();
                 } catch (Exception e) {
-                    System.err.println(e);
                     Thread.currentThread().interrupt();
                     break; // Sale del bucle si se interrumpe el hilo
                 }

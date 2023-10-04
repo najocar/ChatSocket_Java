@@ -90,13 +90,10 @@ public class HomeController implements Initializable {
     public void goRoom() {
         try {
             if (validateName(fieldUser.getText()) && selectRoom() != ""){
-
                 controlUser(fieldUser.getText(), Integer.parseInt(selectRoom()));
-                System.out.println(UserDTO.getUser());
                 App.setRoot("room");
             }else {
-                // usuario existe
-                System.out.println("el usuario ya existe, pon otro");
+                // usuario existe log
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -149,7 +146,7 @@ public class HomeController implements Initializable {
         if (aux != null){
             result = aux.getRoomName();
         }else {
-            System.out.println("selecciona sala");
+        ///log
         }
         return result;
     }
