@@ -1,10 +1,11 @@
-package com.dam.chatsocket_java.model.controllers;
+package com.dam.chatsocket_java.controllers;
 
 import com.dam.chatsocket_java.App;
 import com.dam.chatsocket_java.model.dao.RoomDAO;
 import com.dam.chatsocket_java.model.dao.UsersDAO;
 import com.dam.chatsocket_java.model.domain.*;
 import com.dam.chatsocket_java.model.dto.UserDTO;
+import com.dam.chatsocket_java.utils.LoggerClass;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -54,6 +55,8 @@ public class RoomController implements Initializable {
 
     RoomDAO roomDAO = new RoomDAO();
     UsersDAO usersDAO = new UsersDAO();
+
+    static LoggerClass logger = new LoggerClass(RoomController.class.getName());
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -145,8 +148,9 @@ public class RoomController implements Initializable {
                     Thread.sleep(1000);
                     runnable.run();
                 } catch (Exception e) {
+                    logger.warning("The secondary thread has been interrupted");
                     Thread.currentThread().interrupt();
-                    break; // Sale del bucle si se interrumpe el hilo
+                    break;
                 }
             }
         }).start();

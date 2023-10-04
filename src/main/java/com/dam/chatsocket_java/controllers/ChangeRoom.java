@@ -1,4 +1,4 @@
-package com.dam.chatsocket_java.model.controllers;
+package com.dam.chatsocket_java.controllers;
 
 import com.dam.chatsocket_java.App;
 import com.dam.chatsocket_java.model.dao.RoomsDAO;
@@ -14,10 +14,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -28,31 +26,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class HomeController implements Initializable {
-
+public class ChangeRoom implements Initializable {
     @FXML
     private Pane navbar;
     @FXML
-    private Button closeButton;
-    @FXML
-    private TextField fieldUser;
-    @FXML
-    private Button btnEnter;
-    @FXML
-    private TableView<RoomsDataDTO> roomTable;
+    private TableView<RoomsDataDTO> roomTable; //cambiar al dto
     @FXML
     private TableColumn nameColumn;
     @FXML
     private TableColumn usersColumn;
-
 
     private ObservableList<RoomsDataDTO> rooms;
 
     private double xOffset = 0;
     private double yOffset = 0;
 
-    private UsersDAO usersDao = new UsersDAO();
     private RoomsDAO roomsDao = new RoomsDAO();
+    private UsersDAO usersDao = new UsersDAO();
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -89,11 +79,12 @@ public class HomeController implements Initializable {
 
     public void goRoom() {
         try {
-            if (validateName(fieldUser.getText()) && selectRoom() != ""){
-                controlUser(fieldUser.getText(), Integer.parseInt(selectRoom()));
+            if (selectRoom() != ""){
+                controlUser(UserDTO.getUser().getName(), Integer.parseInt(selectRoom()));
                 App.setRoot("room");
             }else {
-                // usuario existe log
+                // usuario existe
+                System.out.println("el usuario ya existe, pon otro");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -105,14 +96,10 @@ public class HomeController implements Initializable {
         user.setCurrentRoom(room);
 
         UserDTO.setUser(user);
-        usersDao.writeUser(user);
-    }
-
-    public boolean validateName(String name) {
-        if (!name.isEmpty() && !usersDao.userExist(name)){
-            return true;
-        }
-        return false;
+        List<User> listaUsers = usersDao.readUsers().getUsers();
+        listaUsers.set(listaUsers.indexOf(UserDTO.getUser()), user);
+        UsersList usuarios = new UsersList(listaUsers);
+        usersDao.writeUser(usuarios);
     }
 
     public List<RoomsDataDTO> getAllRooms(){
@@ -146,9 +133,8 @@ public class HomeController implements Initializable {
         if (aux != null){
             result = aux.getRoomName();
         }else {
-        ///log
+            System.out.println("selecciona sala");
         }
         return result;
     }
-
 }

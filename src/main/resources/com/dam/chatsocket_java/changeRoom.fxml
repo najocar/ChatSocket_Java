@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.chatsocket_java.model.controllers.ChangeRoom">
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.chatsocket_java.controllers.ChangeRoom">
 
     <Pane fx:id="navbar" prefHeight="54.0" prefWidth="1000.0" style="-fx-background-color: #ACC2C5; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.3), 10, 0.1, 0.0, 0.0 );" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
