@@ -76,8 +76,8 @@
 }
 
 .textAreaMsg{
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
     -fx-border-color: lightgrey;
 }
 
