@@ -22,15 +22,15 @@
             <Button fx:id="closeButton" layoutX="961.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 5px;" text="X" />
             <Button layoutX="923.0" layoutY="15.0" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 5px;" text="-" />
         </children></Pane>
-   <Pane layoutX="286.0" layoutY="130.0" prefHeight="491.0" prefWidth="429.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 10;">
+   <Pane layoutX="286.0" layoutY="130.0" prefHeight="491.0" prefWidth="429.0" styleClass="pane" stylesheets="@style/style.css">
       <children>
-         <TextField fx:id="fieldUser" layoutX="81.0" layoutY="84.0" prefHeight="25.0" prefWidth="268.0" promptText="Usuario" />
+         <TextField fx:id="fieldUser" layoutX="81.0" layoutY="84.0" prefHeight="25.0" prefWidth="268.0" promptText="Usuario" styleClass="input" />
          <Label alignment="CENTER" layoutX="81.0" layoutY="48.0" prefHeight="27.0" prefWidth="268.0" text="Inserta su nombre de usuario" textAlignment="CENTER">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <TableView id="table" fx:id="roomTable" layoutX="81.0" layoutY="174.0" prefHeight="200.0" prefWidth="268.0" style="-fx-background-radius: 10;" styleClass="table" stylesheets="@style/style.css">
+         <TableView id="table" fx:id="roomTable" layoutX="81.0" layoutY="174.0" prefHeight="200.0" prefWidth="268.0" styleClass="table" stylesheets="@style/style.css">
            <columns>
              <TableColumn fx:id="nameColumn" prefWidth="135.0" text="SALA" />
              <TableColumn fx:id="usersColumn" prefWidth="131.0" text="PARTICIPANTES" />
@@ -41,7 +41,7 @@
                <Font size="18.0" />
             </font>
          </Label>
-         <Button fx:id="btnEnter" layoutX="149.0" layoutY="404.0" mnemonicParsing="false" onAction="#goRoom" prefHeight="40.0" prefWidth="132.0" style="-fx-background-radius: 8; -fx-font-weight: bold;" text="ENTRAR AL CHAT" />
+         <Button fx:id="btnEnter" layoutX="149.0" layoutY="404.0" mnemonicParsing="false" onAction="#goRoom" prefHeight="40.0" prefWidth="132.0" styleClass="btnInRoom" text="ENTRAR AL CHAT" />
       </children>
    </Pane>
 </AnchorPane>
