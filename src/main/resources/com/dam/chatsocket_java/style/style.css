@@ -42,7 +42,6 @@
 
 .table .row{
     -fx-text-alignment: center;
-
 }
 
 .input{
@@ -68,5 +67,33 @@
 
 .btnInRoom:hover{
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.65), 6, 0.03, 3, 3);
+    -fx-cursor: hand;
+}
+
+.tableMsg{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 10, 0.03, 5, 5);
+
+}
+
+.textAreaMsg{
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: lightgrey;
+}
+
+.textAreaMsg:hover, .textAreaMsg:focused{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 10, 0.03, 5, 5);
+}
+
+.tableUser{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 10, 0.03, 5, 5);
+
+}
+
+.btnChangeRoom{
+    -fx-background-radius: 8;
+}
+
+.btnChangeRoom:hover{
     -fx-cursor: hand;
 }
