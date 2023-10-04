@@ -11,8 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ConnectionXML {
-    static final File fileRooms = new File("rooms.xml");
-    static final File fileUsers = new File("users.xml");
+    static final File fileRooms = new File("////PORTATIL-1//CarpetaCompartida/rooms.xml");
+    static final File fileUsers = new File("////PORTATIL-1//CarpetaCompartida/users.xml");
+    static String pathFileRoom = "////PORTATIL-1//CarpetaCompartida/";
 
     public ConnectionXML() {}
 
@@ -90,7 +91,7 @@ public class ConnectionXML {
         if(room != null){
             JAXBContext jc = JAXBContext.newInstance(Room.class);
             Unmarshaller unmarshaller = jc.createUnmarshaller();
-            result = (Room) unmarshaller.unmarshal(new File("room_"+room.getIdRoom()+".xml"));
+            result = (Room) unmarshaller.unmarshal(new File(pathFileRoom+"room_"+room.getIdRoom()+".xml"));
         }
         return result;
     }
@@ -103,7 +104,7 @@ public class ConnectionXML {
      */
     public void writeXMLRoom(Room room) throws IOException, JAXBException{
         if(room != null){
-            try (FileWriter writer = new FileWriter("room_"+room.getIdRoom()+".xml")){
+            try (FileWriter writer = new FileWriter(pathFileRoom+"room_"+room.getIdRoom()+".xml")){
                 JAXBContext jc = JAXBContext.newInstance(Room.class);
                 Marshaller marshaller = jc.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
