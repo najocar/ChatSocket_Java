@@ -1,11 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<users>
-    <user>
-        <name>ruben</name>
-        <currentRoom>1</currentRoom>
-    </user>
-    <user>
-        <name>usuario</name>
-        <currentRoom>1</currentRoom>
-    </user>
-</users>
+<users/>

@@ -5,28 +5,28 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
-import com.dam.chatsocket_java.model.connections.LocalDateAdapter;
+import com.dam.chatsocket_java.model.connections.LocalTimeAdapter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "msg")
 public class Msg implements Serializable {
     private String user;
     private String msgContent;
-    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
-    private LocalDate date;
+    @XmlJavaTypeAdapter(value = LocalTimeAdapter.class)
+    private LocalTime time;
 
-    public Msg(String user, String msgContent, LocalDate date) {
+    public Msg(String user, String msgContent, LocalTime time) {
         this.user = user;
         this.msgContent = msgContent;
-        this.date = date;
+        this.time = time;
     }
 
     public Msg() {
         this.user = null;
         this.msgContent = "";
-        this.date = null;
+        this.time = null;
     }
 
     public String getUserName() {
@@ -45,12 +45,12 @@ public class Msg implements Serializable {
         this.msgContent = msgContent;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalTime getDate() {
+        return time;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDate(LocalTime time) {
+        this.time = time;
     }
 
     @Override
@@ -58,12 +58,12 @@ public class Msg implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Msg msg = (Msg) o;
-        return Objects.equals(user, msg.user) && Objects.equals(date, msg.date);
+        return Objects.equals(user, msg.user) && Objects.equals(time, msg.time);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user, date);
+        return Objects.hash(user, time);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class Msg implements Serializable {
         return "Msg{" +
                 "userName='" + user + '\'' +
                 ", msgContent='" + msgContent + '\'' +
-                ", date=" + date +
+                ", date=" + time +
                 '}';
     }
 }

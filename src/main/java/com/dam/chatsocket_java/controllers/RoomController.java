@@ -19,7 +19,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class RoomController implements Initializable {
@@ -113,7 +114,7 @@ public class RoomController implements Initializable {
 
     public void send() {
         String text = msgArea.getText();
-        Msg msg = new Msg(UserDTO.getUser().getName(), text, LocalDate.now());
+        Msg msg = new Msg(UserDTO.getUser().getName(), text, LocalTime.now().withNano(0));
         Room room = roomDAO.readRoom(new Room(UserDTO.getUser().getCurrentRoom()));
         MsgsList msgs = room.getMsgList();
         msgs.addMsg(msg);
