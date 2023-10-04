@@ -17,10 +17,10 @@
          <Image url="@img/background.png" />
       </image>
    </ImageView>
-    <Pane fx:id="navbar" prefHeight="54.0" prefWidth="1000.0" style="-fx-background-color: #ACC2C5; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.3), 10, 0.1, 0.0, 0.0 );" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <Pane fx:id="navbar" prefHeight="54.0" prefWidth="1000.0" style="-fx-background-color: #ACC2C5; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.3), 10, 0.1, 0.0, 0.0 );" stylesheets="@style/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
-            <Button fx:id="closeButton" layoutX="961.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 5px;" text="X" />
-            <Button layoutX="923.0" layoutY="15.0" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 5px;" text="-" />
+            <Button fx:id="closeButton" layoutX="961.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="25.0" prefWidth="25.0" styleClass="btnExit" text="X" />
+            <Button layoutX="923.0" layoutY="15.0" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="25.0" prefWidth="25.0" styleClass="btnMin" text="_" />
         </children></Pane>
    <Pane layoutX="286.0" layoutY="130.0" prefHeight="491.0" prefWidth="429.0" styleClass="pane" stylesheets="@style/style.css">
       <children>
