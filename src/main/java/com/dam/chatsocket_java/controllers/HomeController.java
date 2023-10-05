@@ -100,13 +100,15 @@ public class HomeController implements Initializable {
             if (validateName(fieldUser.getText()) && selectRoom() != ""){
                 controlUser(fieldUser.getText(), Integer.parseInt(selectRoom()));
                 App.setRoot("room");
+            }else if(fieldUser.getText().isEmpty()){
+                logger.info("Enter a username");
             }else if (!validateName(fieldUser.getText())) {
                 logger.info("The nickname inserted is currently in use");
-            }else{
+            }else if(selectRoom().equals("")){
                 logger.info("You must select a room to continue");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.warning("Error loading the room");
         }
     }
 

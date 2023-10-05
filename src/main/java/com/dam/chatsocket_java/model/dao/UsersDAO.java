@@ -103,10 +103,13 @@ public class UsersDAO {
      * true if success
      */
     public boolean userExist(String name) {
-        List<User> allUsers = readUsers().getUsers();
-        for (User user: allUsers) {
-            if (user.equals(new User(name))){
-                return true;
+        UsersList allUsers = readUsers();
+        if(allUsers != null && !name.isEmpty()){
+            List<User> aux = allUsers.getUsers();
+            for (User user: aux) {
+                if (user.equals(new User(name))){
+                    return true;
+                }
             }
         }
         return false;
