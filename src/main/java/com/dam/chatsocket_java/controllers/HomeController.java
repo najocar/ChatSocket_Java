@@ -129,15 +129,16 @@ public class HomeController implements Initializable {
         List<RoomsDataDTO> result = new ArrayList<>();
         UsersList usuarios = usersDao.readUsers();
         RoomsList rooms = roomsDao.readRooms();
-
-        for(String room: rooms.getRooms()){
-            int userLenght = 0;
-            for(User user: usuarios.getUsers()){
-                if(room.equals(String.valueOf(user.getCurrentRoom()))){
-                    userLenght++;
+        if(rooms != null && usuarios != null){
+            for(String room: rooms.getRooms()){
+                int userLenght = 0;
+                for(User user: usuarios.getUsers()){
+                    if(room.equals(String.valueOf(user.getCurrentRoom()))){
+                        userLenght++;
+                    }
                 }
+                result.add(new RoomsDataDTO(room, userLenght));
             }
-            result.add(new RoomsDataDTO(room, userLenght));
         }
         return result;
     }

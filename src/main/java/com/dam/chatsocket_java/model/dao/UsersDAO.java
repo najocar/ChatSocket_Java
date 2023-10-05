@@ -65,8 +65,10 @@ public class UsersDAO {
         UsersList result = new UsersList();
         try {
             result = con.loadXMLUsers();
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
+        } catch (JAXBException | IllegalArgumentException | IOException e) {
+            logger.warning("Error reading file(s)");
+        } catch (Exception e){
+            logger.warning("An unexpected error has occurred");
         }
         return result;
     }

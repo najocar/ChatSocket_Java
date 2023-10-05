@@ -72,7 +72,7 @@ public class ConnectionXML {
      * @throws IllegalArgumentException
      * @throws JAXBException
      */
-    public UsersList loadXMLUsers() throws IllegalArgumentException, JAXBException{
+    public UsersList loadXMLUsers() throws IllegalArgumentException, JAXBException, IOException{
         UsersList result = null;
         if(fileUsers.exists()){
             JAXBContext jc = JAXBContext.newInstance(UsersList.class);
@@ -116,6 +116,12 @@ public class ConnectionXML {
         }
     }
 
+    /**
+     * Method to read configuration path(s) to use in ConfigDTO
+     * @return Settings
+     * @throws JAXBException
+     * @throws IllegalArgumentException
+     */
     public Settings loadXMLConfig() throws JAXBException, IllegalArgumentException {
         Settings result = new Settings();
         if(configFile.exists()){
