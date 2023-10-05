@@ -100,8 +100,10 @@ public class HomeController implements Initializable {
             if (validateName(fieldUser.getText()) && selectRoom() != ""){
                 controlUser(fieldUser.getText(), Integer.parseInt(selectRoom()));
                 App.setRoot("room");
-            }else {
+            }else if (!validateName(fieldUser.getText())) {
                 logger.info("The nickname inserted is currently in use");
+            }else{
+                logger.info("You must select a room to continue");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -153,8 +155,6 @@ public class HomeController implements Initializable {
         RoomsDataDTO aux = this.roomTable.getSelectionModel().getSelectedItem();
         if (aux != null){
             result = aux.getRoomName();
-        }else {
-            logger.info("You must select a room to continue");
         }
         return result;
     }
