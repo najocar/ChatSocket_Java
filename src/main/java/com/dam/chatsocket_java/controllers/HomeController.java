@@ -1,12 +1,14 @@
 package com.dam.chatsocket_java.controllers;
 
 import com.dam.chatsocket_java.App;
+import com.dam.chatsocket_java.model.dao.ConfigDAO;
 import com.dam.chatsocket_java.model.dao.RoomDAO;
 import com.dam.chatsocket_java.model.dao.RoomsDAO;
 import com.dam.chatsocket_java.model.dao.UsersDAO;
 import com.dam.chatsocket_java.model.domain.RoomsList;
 import com.dam.chatsocket_java.model.domain.User;
 import com.dam.chatsocket_java.model.domain.UsersList;
+import com.dam.chatsocket_java.model.dto.ConfigDTO;
 import com.dam.chatsocket_java.model.dto.RoomsDataDTO;
 import com.dam.chatsocket_java.model.dto.UserDTO;
 import com.dam.chatsocket_java.utils.LoggerClass;
@@ -55,6 +57,7 @@ public class HomeController implements Initializable {
 
     private UsersDAO usersDao = new UsersDAO();
     private RoomsDAO roomsDao = new RoomsDAO();
+    private ConfigDAO configDao = new ConfigDAO();
 
     static LoggerClass logger = new LoggerClass(HomeController.class.getName());
 
@@ -76,6 +79,7 @@ public class HomeController implements Initializable {
         this.usersColumn.setCellValueFactory(new PropertyValueFactory("usersLenght"));
 
         generateRoomsTable();
+        ConfigDTO.setConfig(configDao.loadConfig());
     }
 
 

@@ -1,8 +1,10 @@
 package com.dam.chatsocket_java.model.connections;
 
+import com.dam.chatsocket_java.model.domain.Settings;
 import com.dam.chatsocket_java.model.domain.Room;
 import com.dam.chatsocket_java.model.domain.RoomsList;
 import com.dam.chatsocket_java.model.domain.UsersList;
+import com.dam.chatsocket_java.model.dto.ConfigDTO;
 
 import javax.xml.bind.*;
 import java.io.BufferedWriter;
@@ -11,9 +13,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ConnectionXML {
-    static final File fileRooms = new File("////PORTATIL-1//CarpetaCompartida/rooms.xml");
-    static final File fileUsers = new File("////PORTATIL-1//CarpetaCompartida/users.xml");
-    static String pathFileRoom = "////PORTATIL-1//CarpetaCompartida/";
+    static final File fileRooms = new File(ConfigDTO.getSetting().getFileRooms());
+    static final File fileUsers = new File(ConfigDTO.getSetting().getFileUsers());
+    static String pathFileRoom = ConfigDTO.getSetting().getPathFileRoom();
+    static final File configFile = new File("/config.xml");
 
     public ConnectionXML() {}
 
@@ -111,6 +114,16 @@ public class ConnectionXML {
                 marshaller.marshal(room, writer);
             }
         }
+    }
+
+    public Settings loadXMLConfig() throws JAXBException, IllegalArgumentException {
+        Settings result = new Settings();
+        if(configFile.exists()){
+            JAXBContext jc = JAXBContext.newInstance(Settings.class);
+            Unmarshaller unmarshaller = jc.createUnmarshaller();
+            result = (Settings) unmarshaller.unmarshal(configFile);
+        }
+        return result;
     }
 
 }
