@@ -122,7 +122,7 @@ public class ConnectionXML {
      * @throws JAXBException
      * @throws IllegalArgumentException
      */
-    public Settings loadXMLConfig() throws JAXBException, IllegalArgumentException {
+    public Settings loadXMLConfig() throws JAXBException, IllegalArgumentException, IOException {
         Settings result = new Settings();
         if(configFile.exists()){
             JAXBContext jc = JAXBContext.newInstance(Settings.class);

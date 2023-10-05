@@ -80,6 +80,8 @@ public class HomeController implements Initializable {
 
         generateRoomsTable();
         ConfigDTO.setConfig(configDao.loadConfig());
+        checkConnectionFiles();
+
     }
 
 
@@ -97,7 +99,7 @@ public class HomeController implements Initializable {
 
     public void goRoom() {
         try {
-            if (validateName(fieldUser.getText()) && selectRoom() != ""){
+            if (validateName(fieldUser.getText()) && !selectRoom().equals("")){
                 controlUser(fieldUser.getText(), Integer.parseInt(selectRoom()));
                 App.setRoot("room");
             }else if(fieldUser.getText().isEmpty()){
@@ -160,6 +162,12 @@ public class HomeController implements Initializable {
             result = aux.getRoomName();
         }
         return result;
+    }
+
+    public void checkConnectionFiles(){
+        if(!ConfigDTO.checkConnectionFiles()) {
+            logger.warning("Error when trying to connect to files");
+        }
     }
 
 }

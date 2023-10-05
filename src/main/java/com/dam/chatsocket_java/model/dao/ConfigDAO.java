@@ -6,6 +6,7 @@ import com.dam.chatsocket_java.model.dto.ConfigDTO;
 import com.dam.chatsocket_java.utils.LoggerClass;
 
 import javax.xml.bind.JAXBException;
+import java.io.IOException;
 
 public class ConfigDAO {
 
@@ -20,7 +21,7 @@ public class ConfigDAO {
         Settings result = new Settings();
         try {
             result = connection.loadXMLConfig();
-        } catch (IllegalArgumentException | JAXBException e) {
+        } catch (IOException | IllegalArgumentException | JAXBException e) {
             logger.warning("Error reading configuration file");
         } catch (Exception e){
             logger.warning("An unexpected error has occurred");
