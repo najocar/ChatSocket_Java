@@ -30,6 +30,10 @@ public class RoomController implements Initializable {
     @FXML
     private Button closeButton;
     @FXML
+    private Label roomLabel;
+    @FXML
+    private Label userLabel;
+    @FXML
     private TextArea msgArea;
     @FXML
     private TableView<Msg> msgTable;
@@ -80,6 +84,8 @@ public class RoomController implements Initializable {
         usuarios = FXCollections.observableArrayList();
         this.allUserColumn.setCellValueFactory(new PropertyValueFactory("name"));
 
+        setRoomInfo();
+
         reloadTables();
         refreshTables(() -> reloadTables());
     }
@@ -89,6 +95,10 @@ public class RoomController implements Initializable {
         generateUserTable(UserDTO.getUser().getCurrentRoom());
     }
 
+    public void setRoomInfo(){
+        roomLabel.setText("Sala: " + UserDTO.getUser().getCurrentRoom());
+        userLabel.setText("Usuario: " + UserDTO.getUser().getName());
+    }
 
     public void closeWindow(ActionEvent event) {
         Node source = (Node) event.getSource();
@@ -115,7 +125,7 @@ public class RoomController implements Initializable {
 
     public void send() {
         String text = msgArea.getText();
-        if(text != ""){
+        if(text != "" && !text.isEmpty()){
             Msg msg = new Msg(UserDTO.getUser().getName(), text, LocalTime.now().withNano(0));
             Room room = roomDAO.readRoom(new Room(UserDTO.getUser().getCurrentRoom()));
             MsgsList msgs = room.getMsgList();
