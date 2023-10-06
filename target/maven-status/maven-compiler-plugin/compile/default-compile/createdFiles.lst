@@ -1,3 +1,4 @@
+com\dam\chatsocket_java\Main.class
 com\dam\chatsocket_java\model\dao\RoomDAO.class
 com\dam\chatsocket_java\model\domain\Msg.class
 com\dam\chatsocket_java\model\domain\MsgsList.class
