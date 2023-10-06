@@ -91,11 +91,17 @@ public class RoomController implements Initializable {
         refreshTables(() -> reloadTables());
     }
 
+    /**
+     * this method reload the tables
+     */
     public void reloadTables(){
         generateMsgTable(UserDTO.getUser().getCurrentRoom());
         generateUserTable(UserDTO.getUser().getCurrentRoom());
     }
 
+    /**
+     * this method set in the window the name of Room and the name of the user
+     */
     public void setRoomInfo(){
         roomLabel.setText("Sala: " + UserDTO.getUser().getCurrentRoom());
         userLabel.setText("Usuario: " + UserDTO.getUser().getName());

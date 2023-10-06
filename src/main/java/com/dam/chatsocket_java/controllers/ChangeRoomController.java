@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ChangeRoom implements Initializable {
+public class ChangeRoomController implements Initializable {
     @FXML
     private Pane navbar;
     @FXML
@@ -91,6 +91,11 @@ public class ChangeRoom implements Initializable {
         }
     }
 
+    /**
+     * this method modifies the user information
+     * @param name
+     * @param room
+     */
     public void controlUser(String name, int room) {
         User user = new User(name);
         user.setCurrentRoom(room);
@@ -102,6 +107,10 @@ public class ChangeRoom implements Initializable {
         usersDao.writeUser(usuarios);
     }
 
+    /**
+     * this method get all rooms
+     * @return list of rooms
+     */
     public List<RoomsDataDTO> getAllRooms(){
         List<RoomsDataDTO> result = new ArrayList<>();
         UsersList usuarios = usersDao.readUsers();

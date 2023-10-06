@@ -97,6 +97,9 @@ public class HomeController implements Initializable {
         stage.setIconified(true);
     }
 
+    /**
+     * this method set the new Room
+     */
     public void goRoom() {
         try {
             if (validateName(fieldUser.getText()) && !selectRoom().equals("")){
@@ -114,6 +117,11 @@ public class HomeController implements Initializable {
         }
     }
 
+    /**
+     * this method modifies the user information
+     * @param name
+     * @param room
+     */
     public void controlUser(String name, int room) {
         User user = new User(name);
         user.setCurrentRoom(room);
@@ -122,6 +130,11 @@ public class HomeController implements Initializable {
         usersDao.writeUser(user);
     }
 
+    /**
+     * this method checks if the user exists
+     * @param name name of the user
+     * @return
+     */
     public boolean validateName(String name) {
         if (!name.isEmpty() && !usersDao.userExist(name)){
             return true;
@@ -129,6 +142,10 @@ public class HomeController implements Initializable {
         return false;
     }
 
+    /**
+     * this method get all rooms
+     * @return list of rooms
+     */
     public List<RoomsDataDTO> getAllRooms(){
         List<RoomsDataDTO> result = new ArrayList<>();
         UsersList usuarios = usersDao.readUsers();
@@ -164,6 +181,9 @@ public class HomeController implements Initializable {
         return result;
     }
 
+    /**
+     * this method check the connection with the xmlFile
+     */
     public void checkConnectionFiles(){
         if(!ConfigDTO.checkConnectionFiles()) {
             logger.warning("Error when trying to connect to files");
