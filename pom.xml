@@ -76,7 +76,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.dam.chatsocket_java.App</mainClass>
+                            <mainClass>com.dam.chatsocket_java/com.dam.chatsocket_java.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
