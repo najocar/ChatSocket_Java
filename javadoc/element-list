@@ -1,0 +1,8 @@
+module:com.dam.chatsocket_java
+com.dam.chatsocket_java
+com.dam.chatsocket_java.controllers
+com.dam.chatsocket_java.model.connections
+com.dam.chatsocket_java.model.dao
+com.dam.chatsocket_java.model.domain
+com.dam.chatsocket_java.model.dto
+com.dam.chatsocket_java.utils
