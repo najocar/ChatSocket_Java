@@ -56,6 +56,7 @@ public class RoomController implements Initializable {
     private double xOffset = 0;
     private double yOffset = 0;
     private boolean finish = true;
+    private int reconectTrys = 3;
 
 
     RoomDAO roomDAO = new RoomDAO();
@@ -163,12 +164,24 @@ public class RoomController implements Initializable {
                 try {
                     Thread.sleep(1000);
                     runnable.run();
+                    reconectTrys = 3;
                 } catch (Exception e) {
                     logger.warning("The secondary thread has been interrupted");
                     Thread.currentThread().interrupt();
+                    tryReconect(reconectTrys);
                     break;
                 }
             }
         }).start();
+    }
+
+    public void tryReconect(int n) {
+        if (n > 0){
+            reconectTrys--;
+            finish = false;
+            finish = true;
+            logger.info("Try reconect");
+            refreshTables(() -> reloadTables());
+        }
     }
 }
