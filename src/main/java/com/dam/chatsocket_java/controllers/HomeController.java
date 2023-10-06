@@ -2,7 +2,6 @@ package com.dam.chatsocket_java.controllers;
 
 import com.dam.chatsocket_java.App;
 import com.dam.chatsocket_java.model.dao.ConfigDAO;
-import com.dam.chatsocket_java.model.dao.RoomDAO;
 import com.dam.chatsocket_java.model.dao.RoomsDAO;
 import com.dam.chatsocket_java.model.dao.UsersDAO;
 import com.dam.chatsocket_java.model.domain.RoomsList;
