@@ -2,12 +2,13 @@ package com.dam.chatsocket_java.model.dao;
 
 import com.dam.chatsocket_java.model.connections.ConnectionXML;
 import com.dam.chatsocket_java.model.domain.Settings;
-import com.dam.chatsocket_java.model.dto.ConfigDTO;
 import com.dam.chatsocket_java.utils.LoggerClass;
-
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 
+/**
+ * ConfigDAO Class is a point to get data to config.xml by connectionXML class
+ */
 public class ConfigDAO {
 
     ConnectionXML connection = new ConnectionXML();

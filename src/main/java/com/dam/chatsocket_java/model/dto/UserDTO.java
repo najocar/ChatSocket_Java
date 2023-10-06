@@ -2,11 +2,10 @@ package com.dam.chatsocket_java.model.dto;
 
 import com.dam.chatsocket_java.model.domain.User;
 
+/**
+ * UserDTO Class (Singleton) instance to set and get data to user for the actual session
+ */
 public class UserDTO {
-
-    /**
-     * This Class is a DTO(Singleto) for the User Class.
-     */
 
     private static UserDTO _newInstance; // This is instance for the Singleton
     private static User _user;

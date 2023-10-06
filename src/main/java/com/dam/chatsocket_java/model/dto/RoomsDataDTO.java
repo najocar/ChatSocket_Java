@@ -1,9 +1,9 @@
 package com.dam.chatsocket_java.model.dto;
 
+/**
+ * RoomsDataDTO Class (Singleton) instance to set and get data to users.xml and rooms.xml by connectionXML class
+ */
 public class RoomsDataDTO {
-    /**
-     * This Class is a DTO for the ObervableList in the View
-     */
 
     private String roomName;
     private int usersLenght;

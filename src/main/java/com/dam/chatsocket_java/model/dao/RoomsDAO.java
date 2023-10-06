@@ -8,6 +8,9 @@ import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.io.Serializable;
 
+/**
+ * RoomsDAO Class is a point to get data to rooms.xml by connectionXML class
+ */
 public class RoomsDAO implements Serializable {
 
     private static ConnectionXML connection = new ConnectionXML();

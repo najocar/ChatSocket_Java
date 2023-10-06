@@ -4,6 +4,9 @@ import com.dam.chatsocket_java.model.domain.Settings;
 
 import java.io.File;
 
+/**
+ * ConfigDTO Class (Singleton) instance to set and get data to config.xml by connectionXML class
+ */
 public class ConfigDTO {
 
     private static ConfigDTO _newInstance;

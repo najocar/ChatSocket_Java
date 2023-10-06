@@ -4,11 +4,13 @@ import com.dam.chatsocket_java.model.connections.ConnectionXML;
 import com.dam.chatsocket_java.model.domain.User;
 import com.dam.chatsocket_java.model.domain.UsersList;
 import com.dam.chatsocket_java.utils.LoggerClass;
-
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * UsersDAO Class is a point to get data to users.xml by connectionXML class
+ */
 public class UsersDAO {
     static ConnectionXML con = new ConnectionXML();
     static LoggerClass logger = new LoggerClass(UsersDAO.class.getName());

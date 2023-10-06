@@ -1,14 +1,15 @@
 package com.dam.chatsocket_java.model.dao;
 
 import com.dam.chatsocket_java.model.connections.ConnectionXML;
-import com.dam.chatsocket_java.model.domain.Msg;
 import com.dam.chatsocket_java.model.domain.Room;
 import com.dam.chatsocket_java.utils.LoggerClass;
-
 import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * RoomDAO Class is a point to get data to room_[].xml by connectionXML
+ */
 public class RoomDAO {
     ConnectionXML connection = new ConnectionXML();
     static LoggerClass logger = new LoggerClass(RoomDAO.class.getName());
