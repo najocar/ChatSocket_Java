@@ -124,6 +124,9 @@ public class RoomController implements Initializable {
         }
     }
 
+    /**
+     * this method create and send a message and reload the table
+     */
     public void send() {
         String text = msgArea.getText();
         if(text != "" && !text.isEmpty()){
@@ -158,6 +161,10 @@ public class RoomController implements Initializable {
         this.userTable.setItems(usuarios);
     }
 
+    /**
+     * open thread to refresh the tables
+     * @param runnable
+     */
     public void refreshTables(Runnable runnable) {
         new Thread(() -> {
             while (finish) {
@@ -175,6 +182,10 @@ public class RoomController implements Initializable {
         }).start();
     }
 
+    /**
+     * This methos try open again the thread
+     * @param n trys to open the thread
+     */
     public void tryReconect(int n) {
         if (n > 0){
             reconectTrys--;
