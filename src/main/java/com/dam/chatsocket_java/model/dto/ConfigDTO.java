@@ -17,6 +17,10 @@ public class ConfigDTO {
         this.config = config;
     }
 
+    /**
+     * Method to getInstance(Singleton)
+     * @return ConfigDTO
+     */
     public static ConfigDTO getInstance(){
         if(_newInstance == null){
             _newInstance = new ConfigDTO();
@@ -24,7 +28,11 @@ public class ConfigDTO {
         return _newInstance;
     }
 
-    public static Settings getSetting(){
+    /**
+     * Method to get Settings
+     * @return Settings
+     */
+    public static Settings getConfig(){
         if(_newInstance == null){
             _newInstance = new ConfigDTO();
         }
@@ -35,10 +43,19 @@ public class ConfigDTO {
         _newInstance = new ConfigDTO();
     }
 
+    /**
+     * Method to set config in instance(Singleton)
+     * @param config
+     */
     public static void setConfig(Settings config){
         _newInstance = new ConfigDTO(config);
     }
 
+    /**
+     * Method check connection with the files XML
+     * @return boolean
+     * true if connection success
+     */
     public static boolean checkConnectionFiles(){
         if(_newInstance == null)return false;
         File roomsFile = new File(config.getFileRooms());

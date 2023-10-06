@@ -13,9 +13,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ConnectionXML {
-    static final File fileRooms = new File(ConfigDTO.getSetting().getFileRooms());
-    static final File fileUsers = new File(ConfigDTO.getSetting().getFileUsers());
-    static String pathFileRoom = ConfigDTO.getSetting().getPathFileRoom();
+    static final File fileRooms = new File(ConfigDTO.getConfig().getFileRooms());
+    static final File fileUsers = new File(ConfigDTO.getConfig().getFileUsers());
+    static String pathFileRoom = ConfigDTO.getConfig().getPathFileRoom();
     static final File configFile = new File("/config.xml");
 
     public ConnectionXML() {}
