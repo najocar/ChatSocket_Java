@@ -128,11 +128,13 @@ public class RoomController implements Initializable {
         if(text != "" && !text.isEmpty()){
             Msg msg = new Msg(UserDTO.getUser().getName(), text, LocalTime.now().withNano(0));
             Room room = roomDAO.readRoom(new Room(UserDTO.getUser().getCurrentRoom()));
-            MsgsList msgs = room.getMsgList();
-            msgs.addMsg(msg);
-            room.setMsgList(msgs);
-            roomDAO.writeRoom(room);
-            clearField();
+            if (room != null){
+                MsgsList msgs = room.getMsgList();
+                msgs.addMsg(msg);
+                room.setMsgList(msgs);
+                roomDAO.writeRoom(room);
+                clearField();
+            }
             reloadTables();
         }
     }
